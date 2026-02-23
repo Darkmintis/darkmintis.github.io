@@ -63,7 +63,12 @@ const config = {
   }
 };
 
-// Export config
+// Make config available globally
+if (typeof globalThis !== 'undefined') {
+  globalThis.config = config;
+}
+
+// Export for Node.js (if needed)
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = config;
 }
