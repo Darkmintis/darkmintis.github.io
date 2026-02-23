@@ -19,7 +19,7 @@ const config = {
     stats: true,
     pinnedRepos: true,
     allRepos: true,
-    contributions: false, // Coming soon
+    contributions: true,  // Show contribution graph
   },
 
   // 🔧 Layout Options

@@ -8,6 +8,11 @@ import { Renderer } from './renderer.js';
 
 class ProfileEngine {
   constructor() {
+    // Ensure config is available
+    if (!globalThis.config?.username) {
+      throw new Error('Config not loaded. Please ensure config.js is loaded before app.js');
+    }
+    
     this.config = globalThis.config;
     this.github = new GitHubAPI(this.config.username);
     this.theme = new ThemeManager(this.config.theme);
@@ -39,6 +44,16 @@ class ProfileEngine {
       // Step 5: Render everything
       await this.renderer.renderProfile(userData);
       await this.renderer.renderStats(userData, repos);
+      
+      // Render contributions graph
+      if (this.config.sections.contributions) {
+        await this.renderer.renderContributions(this.config.username);
+      } else {
+        document.getElementById('contributions').style.display = 'none';
+      }
+      
+      // Render profile views counter
+      await this.renderer.renderProfileViews(this.config.username);
       
       if (this.config.sections.pinnedRepos && pinnedRepos.length > 0) {
         await this.renderer.renderPinnedRepos(pinnedRepos);
@@ -153,15 +168,31 @@ class ProfileEngine {
   }
 }
 
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
+// Initialize when DOM and config are ready
+function initApp() {
+  // Wait for config to be available
+  if (globalThis.config === undefined) {
+    console.log('⏳ Waiting for config to load...');
+    setTimeout(initApp, 50);
+    return;
+  }
+  
+  try {
     const engine = new ProfileEngine();
     engine.init();
-  });
+  } catch (error) {
+    console.error('Failed to initialize:', error);
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('error').style.display = 'flex';
+    document.getElementById('errorMessage').textContent = error.message;
+  }
+}
+
+// Start initialization when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
 } else {
-  const engine = new ProfileEngine();
-  engine.init();
+  initApp();
 }
 
 export { ProfileEngine };

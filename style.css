@@ -139,13 +139,40 @@ img {
 
 .header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   padding: var(--spacing-md);
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
   margin-bottom: var(--spacing-lg);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.profile-views {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.profile-views:hover {
+  opacity: 1;
+}
+
+.profile-views i {
+  font-size: 1rem;
 }
 
 .theme-toggle {
@@ -156,7 +183,7 @@ img {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   transition: transform var(--transition-fast);
   border: 2px solid transparent;
 }
@@ -387,6 +414,58 @@ img {
 }
 
 /* =====================================================
+   CONTRIBUTIONS SECTION
+   ===================================================== */
+
+.contributions-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.contributions-container {
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  overflow-x: auto;
+}
+
+.contributions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.contribution-graph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.contribution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.contribution-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contribution-note {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.contribution-note i {
+  font-size: 1rem;
+}
+
+/* =====================================================
    REPOS SECTION
    ===================================================== */
 
@@ -397,6 +476,13 @@ img {
 .section-title {
   font-size: 2rem;
   margin-bottom: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.section-title i {
+  font-size: 1.8rem;
 }
 
 .repo-grid {
@@ -596,6 +682,28 @@ img {
   .repo-grid {
     grid-template-columns: 1fr;
   }
+  
+  .header {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+  
+  .profile-views {
+    font-size: 0.8rem;
+    padding: var(--spacing-xs);
+  }
+  
+  .contributions-container {
+    padding: var(--spacing-md);
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-title i {
+    font-size: 1.3rem;
+  }
 }
 
 /* =====================================================
@@ -678,6 +786,16 @@ img {
   background-color: var(--bg-tertiary);
 }
 
+.theme-dark .contributions-container {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.theme-dark .profile-views {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
+}
+
 /* =====================================================
    LIGHT THEME
    ===================================================== */
@@ -758,6 +876,16 @@ img {
   background-color: var(--bg-secondary);
 }
 
+.theme-light .contributions-container {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
+}
+
+.theme-light .profile-views {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
 /* =====================================================
    NEON THEME
    ===================================================== */
@@ -822,6 +950,18 @@ img {
   background-color: var(--bg-tertiary);
   border: 2px solid var(--accent);
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+.theme-neon .contributions-container {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--neon-blue);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.theme-neon .profile-views {
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
 }
 
 /* =====================================================
@@ -889,6 +1029,17 @@ img {
 .theme-hacker .theme-toggle {
   background-color: var(--bg-tertiary);
   border: 2px solid var(--accent);
+}
+
+.theme-hacker .contributions-container {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.theme-hacker .profile-views {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--accent);
 }
 
 /* =====================================================
@@ -960,6 +1111,18 @@ img {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+.theme-glass .contributions-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-glass .profile-views {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 /* =====================================================
    GRADIENT THEME
    ===================================================== */
@@ -1022,6 +1185,18 @@ img {
 .theme-gradient .theme-toggle {
   background: rgba(255, 255, 255, 0.25);
   border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.theme-gradient .contributions-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.theme-gradient .profile-views {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 /* =====================================================

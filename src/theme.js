@@ -50,17 +50,20 @@ export class ThemeManager {
     if (!toggle) return;
 
     const icons = {
-      dark: '🌙',
-      light: '☀️',
-      neon: '✨',
-      hacker: '💻',
-      glass: '💎',
-      gradient: '🌈',
+      dark: 'fa-moon',
+      light: 'fa-sun',
+      neon: 'fa-bolt',
+      hacker: 'fa-terminal',
+      glass: 'fa-gem',
+      gradient: 'fa-palette',
     };
 
     const icon = toggle.querySelector('.theme-icon');
     if (icon) {
-      icon.textContent = icons[this.currentTheme] || '🎨';
+      // Remove all icon classes
+      icon.className = 'fas theme-icon';
+      // Add the new icon class
+      icon.classList.add(icons[this.currentTheme] || 'fa-palette');
     }
   }
 
