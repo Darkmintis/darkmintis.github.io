@@ -1,0 +1,173 @@
+# 🚀 GitHub Portfolio Generator
+
+> Create a beautiful portfolio website in 5 minutes. No coding required—just edit one config file!
+
+## What is this?
+
+A ready-to-use portfolio website that syncs with your GitHub profile. Fork it, add your username, deploy—done! Your professional portfolio is live.
+
+**Perfect for developers who want a portfolio site without building one from scratch.**
+
+## ✨ Features
+
+- 🎨 **6 Themes** - Dark, Light, Neon, Hacker, Glass, Gradient
+- ✨ **Animations** - Fade, Slide, Float, Bounce, Glow
+- 📊 **Auto Stats** - Repos, stars, forks, languages (pulled from GitHub)
+- 📱 **Responsive** - Works on mobile, tablet, desktop
+- ⚡ **Zero Cost** - Free hosting on GitHub Pages
+- 🔧 **One Config** - Edit only `config.js`
+
+## 🚀 Quick Setup (5 Minutes)
+
+### Step 1: Fork & Rename
+1. Click **Fork** (top right)
+2. Go to **Settings** → Rename repository to: `your-username.github.io`
+
+### Step 2: Edit Config
+Open `config.js` and change your username:
+
+```javascript
+const config = {
+  username: "your-github-username",  // ← Change this!
+  theme: "dark",                      // Choose: dark, light, neon, hacker, glass, gradient
+  animation: "fade-in",               // Choose: fade-in, slide-up, floating, bounce, glow
+};
+```
+
+### Step 3: Deploy
+1. Go to **Settings** → **Pages**
+2. Source: **Deploy from a branch**
+3. Branch: **main** → Folder: **/ (root)**
+4. Click **Save**
+
+### Step 4: Visit
+Wait 2-5 minutes, then visit: `https://your-username.github.io`
+
+**That's it! Your portfolio is live! 🎉**
+
+---
+
+## ⚙️ Customization Options
+
+### Basic Config
+```javascript
+const config = {
+  username: "your-github-username",   // Required
+  theme: "dark",                      // dark, light, neon, hacker, glass, gradient
+  animation: "fade-in",               // fade-in, slide-up, floating, bounce, glow, none
+};
+```
+
+### Pin Specific Projects
+```javascript
+pinnedRepos: [
+  "project-name-1",
+  "project-name-2",
+  "project-name-3",
+]
+// Leave empty [] to auto-select your most starred repos
+```
+
+### Add Social Links
+```javascript
+social: {
+  twitter: "yourusername",
+  linkedin: "yourprofile",
+  website: "https://yoursite.com",
+  email: "you@email.com",
+}
+```
+
+### Control What Shows
+```javascript
+sections: {
+  bio: true,           // Show your bio
+  stats: true,         // Show stats (stars, repos, etc)
+  pinnedRepos: true,   // Show pinned projects
+  allRepos: true,      // Show all repositories
+}
+```
+
+### Layout Options
+```javascript
+layout: {
+  reposPerRow: 3,            // 1-4 repos per row
+  sortReposBy: "stars",      // Sort by: "stars", "updated", "name"
+  showLanguageColors: true,  // Show language colors
+  showStars: true,           // Show star counts
+  showForks: true,           // Show fork counts
+}
+
+settings: {
+  maxReposToShow: 12,        // Max number of repos to display
+}
+```
+
+---
+
+## 🎨 Available Themes
+
+| Theme | Style |
+|-------|-------|
+| `dark` | GitHub dark mode (professional) |
+| `light` | GitHub light mode (clean) |
+| `neon` | Cyberpunk with glowing effects |
+| `hacker` | Matrix terminal style |
+| `glass` | Modern glassmorphism |
+| `gradient` | Animated color gradients |
+
+---
+
+## 🛠️ What Gets Displayed
+
+**Auto-pulled from GitHub:**
+- ✅ Profile picture, name, bio
+- ✅ Location, company, website
+- ✅ Follower/following counts
+- ✅ All your repositories
+- ✅ Stars, forks, languages
+- ✅ Top 5 programming languages with percentages
+
+---
+
+## 🐛 Troubleshooting
+
+**Profile not loading?**
+- Check your username in `config.js` is correct
+- Make sure your GitHub profile is public
+
+**No repos showing?**
+- Ensure you have public repositories
+- Check `maxReposToShow` setting
+
+**Theme not working?**
+- Clear browser cache (Ctrl+Shift+R)
+- Check theme name spelling
+
+**GitHub Pages not deploying?**
+- Verify repo name is `username.github.io`
+- Wait 5 minutes after enabling Pages
+
+---
+
+## 🔒 Privacy & Security
+
+- ✅ Uses only **public** GitHub API (no auth needed)
+- ✅ No API keys or tokens stored
+- ✅ No private data accessed
+- ✅ 100% client-side (no backend)
+- ✅ Zero cost, zero tracking
+
+---
+
+## 📄 License
+
+MIT License - Use it however you want!
+
+---
+
+## 🌟 Show Your Support
+
+**If this helped you, give it a ⭐ star!**
+
+Made with ❤️ for developers who want quick portfolios.
