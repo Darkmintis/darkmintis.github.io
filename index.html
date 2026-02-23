@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Config-Driven GitHub Profile Engine">
+  <title>GitHub Profile</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Config -->
+  <script src="config.js"></script>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading GitHub Profile...</p>
+  </div>
+
+  <!-- Main Container -->
+  <div id="app" class="app-container" style="display: none;">
+    <!-- Header Component -->
+    <header id="header" class="header">
+      <div class="theme-toggle" id="themeToggle">
+        <span class="theme-icon">🌙</span>
+      </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section id="profile" class="profile-section">
+      <!-- Profile component will be rendered here -->
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats-section">
+      <!-- Stats component will be rendered here -->
+    </section>
+
+    <!-- Pinned Repos Section -->
+    <section id="pinnedRepos" class="repos-section">
+      <h2 class="section-title">📌 Pinned Repositories</h2>
+      <div id="pinnedReposContainer" class="repos-container">
+        <!-- Pinned repo cards will be rendered here -->
+      </div>
+    </section>
+
+    <!-- All Repos Section -->
+    <section id="allRepos" class="repos-section">
+      <h2 class="section-title">📚 All Repositories</h2>
+      <div id="allReposContainer" class="repos-container">
+        <!-- All repo cards will be rendered here -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        Powered by 
+        <a href="https://github.com" target="_blank">GitHub API</a>
+        | 
+        <a href="https://github.com/darkmintis/darkmintis.github.io" target="_blank">
+          Fork This Engine
+        </a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Error Container -->
+  <div id="error" class="error-container" style="display: none;">
+    <div class="error-content">
+      <h1>⚠️ Error</h1>
+      <p id="errorMessage"></p>
+      <button onclick="location.reload()">Retry</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="src/github.js"></script>
+  <script type="module" src="src/theme.js"></script>
+  <script type="module" src="src/animations.js"></script>
+  <script type="module" src="src/renderer.js"></script>
+  <script type="module" src="components/Profile.js"></script>
+  <script type="module" src="components/Stats.js"></script>
+  <script type="module" src="components/RepoCards.js"></script>
+  <script type="module" src="components/Header.js"></script>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
