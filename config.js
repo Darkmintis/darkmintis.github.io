@@ -1,0 +1,69 @@
+// ⚙️ CONFIG-DRIVEN GITHUB PROFILE ENGINE
+// Edit this file ONLY to customize your profile
+
+const config = {
+  // 👤 Your GitHub Username
+  username: "darkmintis",
+
+  // 🎨 Theme Selection
+  // Options: "dark", "light", "neon", "hacker", "glass", "gradient"
+  theme: "dark",
+
+  // ✨ Animation Style
+  // Options: "fade-in", "slide-up", "floating", "bounce", "glow", "none"
+  animation: "fade-in",
+
+  // 📊 Profile Sections Visibility
+  sections: {
+    bio: true,
+    stats: true,
+    pinnedRepos: true,
+    allRepos: true,
+    contributions: false, // Coming soon
+  },
+
+  // 🔧 Layout Options
+  layout: {
+    reposPerRow: 3,        // Number of repo cards per row
+    showLanguageColors: true,
+    showStars: true,
+    showForks: true,
+    sortReposBy: "stars",  // Options: "stars", "updated", "name"
+  },
+
+  // 📌 Custom Pinned Repos (optional)
+  // If empty, will auto-select top repos by stars
+  pinnedRepos: [
+    // "repo-name-1",
+    // "repo-name-2",
+    // "repo-name-3",
+  ],
+
+  // 🔗 Social Links (optional)
+  social: {
+    twitter: "",           // Username only
+    linkedin: "",          // Username only
+    website: "",           // Full URL
+    email: "",             // Email address
+  },
+
+  // 🎯 Custom Settings
+  settings: {
+    maxReposToShow: 12,    // Maximum repos to display
+    bioMaxLength: 160,     // Characters to show in bio
+    animationDelay: 100,   // Delay between animations (ms)
+    enableScrollEffects: true,
+  },
+
+  // 🌟 Feature Flags
+  features: {
+    darkModeToggle: true,
+    searchRepos: false,    // Coming soon
+    filterByLanguage: false, // Coming soon
+  }
+};
+
+// Export config
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = config;
+}
