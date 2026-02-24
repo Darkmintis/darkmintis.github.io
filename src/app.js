@@ -169,6 +169,21 @@ class ProfileEngine {
     document.getElementById('error').style.display = 'flex';
     document.getElementById('errorMessage').textContent = message;
   }
+
+  updateFavicon(avatarUrl) {
+    // Remove old favicon
+    const oldFavicon = document.querySelector('link[rel="icon"]');
+    if (oldFavicon) {
+      oldFavicon.remove();
+    }
+    
+    // Add new favicon with user's avatar
+    const link = document.createElement('link');
+    link.rel = 'icon';
+    link.type = 'image/png';
+    link.href = avatarUrl;
+    document.head.appendChild(link);
+  }
 }
 
 // Initialize when DOM and config are ready
