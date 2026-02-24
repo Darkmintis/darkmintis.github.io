@@ -10,7 +10,7 @@ A ready-to-use portfolio website that syncs with your GitHub profile. Fork it, a
 
 ## ✨ Features
 
-- 🎨 **6 Themes** - Dark, Light, Neon, Hacker, Glass, Gradient
+- 🎨 **4 Themes** - Dark, Light, Neon, Hacker
 - ✨ **Animations** - Fade, Slide, Float, Bounce, Glow
 - 📊 **Auto Stats** - Repos, stars, forks, languages (pulled from GitHub)
 - 📱 **Responsive** - Works on mobile, tablet, desktop
@@ -29,7 +29,8 @@ Open `config.js` and change your username:
 ```javascript
 const config = {
   username: "your-github-username",  // ← Change this!
-  theme: "dark",                      // Choose: dark, light, neon, hacker, glass, gradient
+  githubToken: "",                    // Optional: Add token to avoid rate limits
+  theme: "dark",                      // Choose: dark, light, neon, hacker
   animation: "fade-in",               // Choose: fade-in, slide-up, floating, bounce, glow
 };
 ```
@@ -53,7 +54,8 @@ Wait 2-5 minutes, then visit: `https://your-username.github.io`
 ```javascript
 const config = {
   username: "your-github-username",   // Required
-  theme: "dark",                      // dark, light, neon, hacker, glass, gradient
+  githubToken: "",                    // Optional but recommended
+  theme: "dark",                      // dark, light, neon, hacker
   animation: "fade-in",               // fade-in, slide-up, floating, bounce, glow, none
 };
 ```
@@ -113,8 +115,33 @@ settings: {
 | `light` | GitHub light mode (clean) |
 | `neon` | Cyberpunk with glowing effects |
 | `hacker` | Matrix terminal style |
-| `glass` | Modern glassmorphism |
-| `gradient` | Animated color gradients |
+
+---
+
+## 🔑 GitHub Token (Optional but Recommended)
+
+**Why?** Without token: 60 requests/hour | With token: 5000 requests/hour
+
+**Setup in 3 steps:**
+
+1. **Create token:** https://github.com/settings/tokens/new
+   - Name: `Portfolio Generator`
+   - Expiration: `1 year`
+   - **Select ONLY:** ☑️ `public_repo` (uncheck everything else!)
+   - Click **Generate token**
+
+2. **Copy token:** Starts with `ghp_...`
+
+3. **Paste in config.js:**
+   ```javascript
+   githubToken: "ghp_your_token_here",
+   ```
+
+### Security Notes
+
+✅ **Safe because:** Token is read-only, only accesses your public data  
+⚠️ **Visible in browser:** This is OK - it's your portfolio, minimal permissions  
+🔒 **Each developer:** Creates their own token for their own fork
 
 ---
 
@@ -136,6 +163,11 @@ settings: {
 - Check your username in `config.js` is correct
 - Make sure your GitHub profile is public
 
+**"Rate limit exceeded" error?**
+- GitHub limits unauthenticated requests to 60/hour
+- Add a GitHub token in `config.js` to get 5000/hour
+- See "GitHub Token" section above
+
 **No repos showing?**
 - Ensure you have public repositories
 - Check `maxReposToShow` setting
@@ -152,8 +184,8 @@ settings: {
 
 ## 🔒 Privacy & Security
 
-- ✅ Uses only **public** GitHub API (no auth needed)
-- ✅ No API keys or tokens stored
+- ✅ Uses only **public** GitHub API
+- ✅ Token (if used) only accesses public data
 - ✅ No private data accessed
 - ✅ 100% client-side (no backend)
 - ✅ Zero cost, zero tracking

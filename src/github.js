@@ -2,10 +2,35 @@
 // Handles all GitHub API calls using public endpoints
 
 export class GitHubAPI {
-  constructor(username) {
+  constructor(username, token = null) {
     this.username = username;
+    this.token = token;
     this.baseURL = 'https://api.github.com';
     this.cache = new Map();
+  }
+
+  getHeaders() {
+    const headers = {
+      'Accept': 'application/vnd.github.v3+json',
+    };
+    
+    if (this.token) {
+      headers['Authorization'] = `token ${this.token}`;
+    }
+    
+    return headers;
+  }
+
+  async checkRateLimit() {
+    try {
+      const response = await fetch(`${this.baseURL}/rate_limit`, {
+        headers: this.getHeaders()
+      });
+      const data = await response.json();
+      return data.rate;
+    } catch {
+      return null;
+    }
   }
 
   async fetchUserData() {
@@ -19,11 +44,25 @@ export class GitHubAPI {
       const url = `${this.baseURL}/users/${this.username}`;
       console.log('🔍 Fetching user data from:', url);
       
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        headers: this.getHeaders()
+      });
       
       if (!response.ok) {
         if (response.status === 404) {
           throw new Error(`GitHub user "${this.username}" not found`);
+        }
+        if (response.status === 403) {
+          const rateLimit = await this.checkRateLimit();
+          if (rateLimit?.remaining === 0) {
+            const resetDate = new Date(rateLimit.reset * 1000);
+            throw new Error(
+              `GitHub API rate limit exceeded. ` +
+              `Resets at ${resetDate.toLocaleTimeString()}. ` +
+              `Add a GitHub token in config.js to increase limit from 60 to 5000 requests/hour. ` +
+              `Get token at: https://github.com/settings/tokens/new`
+            );
+          }
         }
         throw new Error(`Failed to fetch user data: ${response.status} ${response.statusText}`);
       }
@@ -49,9 +88,22 @@ export class GitHubAPI {
       const url = `${this.baseURL}/users/${this.username}/repos?per_page=100&sort=updated`;
       console.log('🔍 Fetching repositories from:', url);
       
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        headers: this.getHeaders()
+      });
       
       if (!response.ok) {
+        if (response.status === 403) {
+          const rateLimit = await this.checkRateLimit();
+          if (rateLimit?.remaining === 0) {
+            const resetDate = new Date(rateLimit.reset * 1000);
+            throw new Error(
+              `GitHub API rate limit exceeded. ` +
+              `Resets at ${resetDate.toLocaleTimeString()}. ` +
+              `Add a GitHub token in config.js for higher limits.`
+            );
+          }
+        }
         throw new Error(`Failed to fetch repositories: ${response.status} ${response.statusText}`);
       }
 

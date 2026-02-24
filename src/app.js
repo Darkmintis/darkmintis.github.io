@@ -14,7 +14,7 @@ class ProfileEngine {
     }
     
     this.config = globalThis.config;
-    this.github = new GitHubAPI(this.config.username);
+    this.github = new GitHubAPI(this.config.username, this.config.githubToken);
     this.theme = new ThemeManager(this.config.theme);
     this.animations = new AnimationManager(this.config.animation, this.config.settings.animationDelay);
     this.renderer = new Renderer(this.config);
