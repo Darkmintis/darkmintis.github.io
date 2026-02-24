@@ -6,7 +6,7 @@ const config = {
   username: "darkmintis",
 
   // 🎨 Theme Selection
-  // Options: "dark", "light", "neon", "hacker", "glass", "gradient"
+  // Options: "dark", "light", "neon", "hacker"
   theme: "dark",
 
   // ✨ Animation Style

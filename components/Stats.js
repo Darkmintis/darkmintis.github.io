@@ -12,25 +12,25 @@ export function renderStats(userData, repos, config) {
     <div class="stats-container">
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-icon">📦</div>
+          <div class="stat-icon"><i class="fas fa-box"></i></div>
           <div class="stat-value">${formatNumber(userData.public_repos)}</div>
           <div class="stat-label">Public Repos</div>
         </div>
 
         <div class="stat-card">
-          <div class="stat-icon">⭐</div>
+          <div class="stat-icon"><i class="fas fa-star"></i></div>
           <div class="stat-value">${formatNumber(totalStars)}</div>
           <div class="stat-label">Total Stars</div>
         </div>
 
         <div class="stat-card">
-          <div class="stat-icon">🔱</div>
+          <div class="stat-icon"><i class="fas fa-code-fork"></i></div>
           <div class="stat-value">${formatNumber(totalForks)}</div>
           <div class="stat-label">Total Forks</div>
         </div>
 
         <div class="stat-card">
-          <div class="stat-icon">👥</div>
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
           <div class="stat-value">${formatNumber(userData.followers)}</div>
           <div class="stat-label">Followers</div>
         </div>

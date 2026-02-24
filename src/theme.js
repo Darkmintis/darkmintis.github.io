@@ -4,7 +4,7 @@
 export class ThemeManager {
   constructor(initialTheme) {
     this.currentTheme = initialTheme;
-    this.themes = ['dark', 'light', 'neon', 'hacker', 'glass', 'gradient'];
+    this.themes = ['dark', 'light', 'neon', 'hacker'];
     this.loadSavedTheme();
   }
 
@@ -40,9 +40,6 @@ export class ThemeManager {
     const nextTheme = this.themes[nextIndex];
     
     this.applyTheme(nextTheme);
-    
-    // Show theme notification
-    this.showThemeNotification(nextTheme);
   }
 
   updateThemeIcon() {
@@ -54,8 +51,6 @@ export class ThemeManager {
       light: 'fa-sun',
       neon: 'fa-bolt',
       hacker: 'fa-terminal',
-      glass: 'fa-gem',
-      gradient: 'fa-palette',
     };
 
     const icon = toggle.querySelector('.theme-icon');
@@ -65,33 +60,6 @@ export class ThemeManager {
       // Add the new icon class
       icon.classList.add(icons[this.currentTheme] || 'fa-palette');
     }
-  }
-
-  showThemeNotification(theme) {
-    // Remove existing notification
-    const existing = document.querySelector('.theme-notification');
-    if (existing) {
-      existing.remove();
-    }
-
-    // Create notification
-    const notification = document.createElement('div');
-    notification.className = 'theme-notification';
-    notification.textContent = `Theme: ${theme.charAt(0).toUpperCase() + theme.slice(1)}`;
-    document.body.appendChild(notification);
-
-    // Show notification
-    setTimeout(() => {
-      notification.classList.add('show');
-    }, 10);
-
-    // Hide and remove after 2 seconds
-    setTimeout(() => {
-      notification.classList.remove('show');
-      setTimeout(() => {
-        notification.remove();
-      }, 300);
-    }, 2000);
   }
 
   getCurrentTheme() {
