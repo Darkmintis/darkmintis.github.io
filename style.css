@@ -332,11 +332,11 @@ img {
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   text-align: center;
-  transition: transform var(--transition-fast);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
 }
 
 .stat-icon {
@@ -497,12 +497,12 @@ img {
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid transparent;
 }
 
 .repo-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
@@ -1013,7 +1013,7 @@ img {
 
 /* Fade In */
 .animation-fade-in .animate-in {
-  animation: fadeIn 0.6s ease forwards;
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
 }
 
@@ -1023,9 +1023,9 @@ img {
 
 /* Slide Up */
 .animation-slide-up .animate-in {
-  animation: slideUp 0.6s ease forwards;
+  animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
 }
 
 @keyframes slideUp {
@@ -1038,17 +1038,17 @@ img {
 /* Floating */
 .animation-floating .repo-card,
 .animation-floating .stat-card {
-  animation: floating 3s ease-in-out infinite;
+  animation: floating 4s ease-in-out infinite;
 }
 
 @keyframes floating {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
 
 /* Bounce */
 .animation-bounce .animate-in {
-  animation: bounceIn 0.8s ease forwards;
+  animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   opacity: 0;
   transform: scale(0.3);
 }
@@ -1063,7 +1063,7 @@ img {
     transform: scale(1.05);
   }
   70% {
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   100% {
     opacity: 1;
@@ -1074,26 +1074,29 @@ img {
 /* Glow */
 .animation-glow .repo-card,
 .animation-glow .stat-card {
-  animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 3s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
 }
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2),
+                0 2px 8px rgba(0, 0, 0, 0.1);
   }
   to {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
-                0 0 30px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.3),
+                0 4px 16px rgba(0, 0, 0, 0.2);
   }
 }
 
 /* Particle Effect */
 .particle-effect {
   position: relative;
-  animation: pulse 0.6s ease;
+  animation: pulse 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.03); }
 }

@@ -25,12 +25,12 @@ export class AnimationManager {
       }, index * this.delay);
     });
 
-    // Animate repo cards with stagger
+    // Animate repo cards with stagger - smoother timing
     const repoCards = document.querySelectorAll('.repo-card');
     repoCards.forEach((card, index) => {
       setTimeout(() => {
         card.classList.add('animate-in');
-      }, sections.length * this.delay + index * 50);
+      }, sections.length * this.delay + index * 75);
     });
 
     console.log('✨ Animations applied:', this.animationType);

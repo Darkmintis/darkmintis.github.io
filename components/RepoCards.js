@@ -69,7 +69,6 @@ function renderRepoCard(repo, config) {
           ${stars}
           ${forks}
         </div>
-        <span class="repo-updated">${repo.formattedDate}</span>
       </div>
     </a>
   `;
