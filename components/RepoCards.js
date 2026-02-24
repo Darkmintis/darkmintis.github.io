@@ -1,4 +1,4 @@
-// 📦 REPO CARDS COMPONENT
+// REPO CARDS COMPONENT
 // Renders repository cards
 
 export function renderRepoCards(repos, config) {
@@ -23,7 +23,7 @@ function renderRepoCard(repo, config) {
   const stars = config.layout.showStars
     ? `
       <span class="repo-stat">
-        <span class="repo-stat-icon">⭐</span>
+        <i class="fas fa-star repo-stat-icon"></i>
         ${formatNumber(repo.stargazers_count)}
       </span>
     `
@@ -32,7 +32,7 @@ function renderRepoCard(repo, config) {
   const forks = config.layout.showForks
     ? `
       <span class="repo-stat">
-        <span class="repo-stat-icon">🔱</span>
+        <i class="fas fa-code-fork repo-stat-icon"></i>
         ${formatNumber(repo.forks_count)}
       </span>
     `
@@ -51,7 +51,7 @@ function renderRepoCard(repo, config) {
     >
       <div class="repo-card-header">
         <h3 class="repo-name">
-          <span class="repo-icon">📁</span>
+          <i class="fas fa-folder repo-icon"></i>
           ${repo.name}
         </h3>
         ${repo.private ? '<span class="repo-badge">Private</span>' : ''}

@@ -1,4 +1,4 @@
-// 📊 STATS COMPONENT
+// STATS COMPONENT
 // Renders GitHub statistics
 
 export function renderStats(userData, repos, config) {

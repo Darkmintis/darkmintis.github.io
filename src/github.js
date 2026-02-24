@@ -1,4 +1,4 @@
-// 🔌 GITHUB API INTEGRATION
+// GITHUB API INTEGRATION
 // Handles all GitHub API calls using public endpoints
 
 export class GitHubAPI {

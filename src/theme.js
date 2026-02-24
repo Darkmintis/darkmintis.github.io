@@ -1,4 +1,4 @@
-// 🎨 THEME MANAGER
+// THEME MANAGER
 // Handles theme switching and persistence
 
 export class ThemeManager {
@@ -31,7 +31,7 @@ export class ThemeManager {
     // Update theme toggle icon
     this.updateThemeIcon();
 
-    console.log('🎨 Theme applied:', theme);
+    console.log('Theme applied:', theme);
   }
 
   toggleTheme() {

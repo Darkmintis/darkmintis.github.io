@@ -1,4 +1,4 @@
-// 🚀 MAIN APPLICATION ENTRY POINT
+// MAIN APPLICATION ENTRY POINT
 // Orchestrates the entire profile generation flow
 
 import { GitHubAPI } from './github.js';
@@ -31,8 +31,11 @@ class ProfileEngine {
       // Step 2: Fetch GitHub user data
       const userData = await this.github.fetchUserData();
       console.log('✅ User data fetched:', userData.login);
+      
+      // Step 3: Update favicon with user's profile image
+      this.updateFavicon(userData.avatar_url);
 
-      // Step 3: Fetch repositories
+      // Step 4: Fetch repositories
       const repos = await this.github.fetchRepositories();
       console.log('✅ Repositories fetched:', repos.length);
 
@@ -52,8 +55,8 @@ class ProfileEngine {
         document.getElementById('contributions').style.display = 'none';
       }
       
-      // Render profile views counter
-      await this.renderer.renderProfileViews(this.config.username);
+      // Render profile views counter with theme color
+      await this.renderer.renderProfileViews(this.config.username, this.config.theme);
       
       if (this.config.sections.pinnedRepos && pinnedRepos.length > 0) {
         await this.renderer.renderPinnedRepos(pinnedRepos);

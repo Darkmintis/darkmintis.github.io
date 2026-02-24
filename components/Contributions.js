@@ -1,4 +1,4 @@
-// 📊 CONTRIBUTIONS COMPONENT
+// CONTRIBUTIONS COMPONENT
 // Renders GitHub contribution graph
 
 export function renderContributions(username) {

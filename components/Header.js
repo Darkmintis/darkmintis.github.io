@@ -1,4 +1,4 @@
-// 📌 HEADER COMPONENT
+// HEADER COMPONENT
 // Renders the header with theme toggle
 
 export function renderHeader(config) {

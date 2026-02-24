@@ -1,4 +1,4 @@
-// 👤 PROFILE COMPONENT
+// PROFILE COMPONENT
 // Renders user profile information
 
 export function renderProfile(userData, config) {

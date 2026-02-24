@@ -34,15 +34,21 @@ export class Renderer {
     container.innerHTML = html;
   }
 
-  async renderProfileViews(username) {
+  async renderProfileViews(username, theme = 'dark') {
     const viewCount = document.getElementById('viewCount');
     if (!viewCount) return;
 
-    // Using a simple badge counter service
-    // This will show profile views
-    const badgeUrl = `https://komarev.com/ghpvc/?username=${username}&style=flat-square&color=blue`;
+    // Map themes to badge colors
+    const themeColors = {
+      dark: 'blue',
+      light: 'blue',
+      neon: 'blueviolet',
+      hacker: 'brightgreen'
+    };
     
-    // Extract count from badge (or show the badge itself)
+    const badgeColor = themeColors[theme] || 'blue';
+    const badgeUrl = `https://komarev.com/ghpvc/?username=${username}&style=flat-square&color=${badgeColor}`;
+    
     viewCount.innerHTML = `<img src="${badgeUrl}" alt="Profile Views" style="height: 20px; vertical-align: middle;">`;
   }
 

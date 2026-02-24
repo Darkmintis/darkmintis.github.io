@@ -1,4 +1,4 @@
-// ✨ ANIMATION MANAGER
+// ANIMATION MANAGER
 // Handles animations and scroll effects
 
 export class AnimationManager {
@@ -10,7 +10,7 @@ export class AnimationManager {
 
   applyAnimations() {
     if (this.animationType === 'none') {
-      console.log('✨ Animations disabled');
+      console.log('Animations disabled');
       return;
     }
 
@@ -33,7 +33,7 @@ export class AnimationManager {
       }, sections.length * this.delay + index * 75);
     });
 
-    console.log('✨ Animations applied:', this.animationType);
+    console.log('Animations applied:', this.animationType);
   }
 
   addFloatingEffect(selector = '.repo-card') {
